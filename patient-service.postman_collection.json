@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "387f5ec1-86da-48e3-b9e7-3283fc48ca28",
+		"name": "patient-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32797506"
+	},
+	"item": [
+		{
+			"name": "getTokenByCredentials",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "myclient",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "user1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "user1",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "b2moEsjztDOtbt4OdCEWlln49I0JfttY",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://keycloak:8080/realms/OAuth/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"keycloak"
+					],
+					"port": "8080",
+					"path": [
+						"realms",
+						"OAuth",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPatients",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJEVm9GcjNBMmxIYktzcVFJT2c5OU9oOUFpZ2oxcjBGVlF0X01fekctMnh3In0.eyJleHAiOjE3NDI5OTMzNTAsImlhdCI6MTc0Mjk5MzA1MCwianRpIjoiZDQzYjg5Y2QtYWM1OS00NjY2LWE0ZGYtNTI1Njc4NjYxMDljIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL09BdXRoIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImI3YjQzYzY3LWQzM2QtNGY3ZS1hNjdlLWRmNzcxNzlmYjI5MyIsInR5cCI6IkJlYXJlciIsImF6cCI6Im15Y2xpZW50Iiwic2lkIjoiMGFmMDgwNWYtYWJhMC00OWVmLTg5ZjUtODcyZWNjMDQzZDVlIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwODMiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLW9hdXRoIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibXljbGllbnQiOnsicm9sZXMiOlsiUGF0aWVudC5EZWxldGUiLCJQcmFjdGl0aW9uZXIiLCJQYXRpZW50LldyaXRlIiwiUGF0aWVudC5SZWFkIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6InVzZXIyIHVzZXIyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjIiLCJnaXZlbl9uYW1lIjoidXNlcjIiLCJmYW1pbHlfbmFtZSI6InVzZXIyIiwiZW1haWwiOiJ1c2VyMkBnbWFpbC5jb20ifQ.R0G0YqnMCXdRbZbr1NraymKE7U20Zp1_IhyfuFedojjbtdzyxUiow2dJcc-ly7lkFdW-T1zqlrGA-06ZvhkPQxmoxW1f6Vw7pZy6FVzJ1cA65OBoWB3Wu4bVSQASqXqS4g6Cp32cerI4hMWQVIgyxvO9h8cn5bMKrW-wefc7o_pehrBaSS1nCeJ3TIzQCwzgmzOf6HYOPqZpaHYAnw7NfaqcRxR5oBtDkviIkJr5qfWSu42LZ-6fCPYMExOYpsHfkX2WAHX37AjeF5XMH4OHILEEDr4dHTNQ2PHN7evWH-MILsaSJ2cjrhbXD9N1R__JRvz9Mf4dgiDVQzj2R9rcNg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/patients/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"patients",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPatientById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJEVm9GcjNBMmxIYktzcVFJT2c5OU9oOUFpZ2oxcjBGVlF0X01fekctMnh3In0.eyJleHAiOjE3NDI5OTQ2MzksImlhdCI6MTc0Mjk5NDMzOSwianRpIjoiZWRhZTU5ZDQtNjY4ZS00MzVhLTk1YjYtYzk4OGViZDM3YWU0IiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL09BdXRoIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImRlZWZiN2RmLTEyMmYtNDRlNS05ODJiLWY3ZThjNGFmOTRmOSIsInR5cCI6IkJlYXJlciIsImF6cCI6Im15Y2xpZW50Iiwic2lkIjoiMWUxNGViZGQtOWE0My00Y2JjLWJlYTgtYzRiMDFhOTU3MzllIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwODMiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLW9hdXRoIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibXljbGllbnQiOnsicm9sZXMiOlsiUGF0aWVudC5SZWFkIiwiUGF0aWVudCJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJ1c2VyMSB1c2VyMSIsInByZWZlcnJlZF91c2VybmFtZSI6InVzZXIxIiwiZ2l2ZW5fbmFtZSI6InVzZXIxIiwiZmFtaWx5X25hbWUiOiJ1c2VyMSIsImVtYWlsIjoidXNlcjFAZ21haWwuY29tIn0.jQacYCqle9ytAg6v1UWu24zBcZqHtK6KJASyek6vVwXMpZElFMnTiZ7Mbefl3-g3akMbE5R_VdbIMlpEN8CzPGRieehDnPamuGR0aV1AX77bbbl7i-qfLrnxpBzfUP0aJcE1jsAqQ0Va0G7B3izCxZ6H7EgVbvOZcK9Wz_jM3MNGnhPVBRvxnLc57ZrA8siPfF0yyiWfuhzgDu9mX5y-UbZJoOcHp9HRLxXcN68AD5v5-uPcak61c0Y7QHCvaYWhAxGB_JlKfmXHHlX_GXKmCU19hKwOK3o0YWRTsnGHZz5AKF2daxBDJfy18nTj2XivsWSdOJF-N1XKLezNczIPaA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/patients/5bcdfc9b-d2ee-4476-9aa4-916e1df96d5d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"patients",
+						"5bcdfc9b-d2ee-4476-9aa4-916e1df96d5d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePatient",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJEVm9GcjNBMmxIYktzcVFJT2c5OU9oOUFpZ2oxcjBGVlF0X01fekctMnh3In0.eyJleHAiOjE3NDI5OTQ0NDQsImlhdCI6MTc0Mjk5NDE0NCwianRpIjoiNzQwZDkyMjItZDFlNS00NDE3LTg3MTYtZGNkYWRhYzUzMmNmIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL09BdXRoIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImI3YjQzYzY3LWQzM2QtNGY3ZS1hNjdlLWRmNzcxNzlmYjI5MyIsInR5cCI6IkJlYXJlciIsImF6cCI6Im15Y2xpZW50Iiwic2lkIjoiMzkyZjQ5ZjktZmUwMy00MDg5LTk0ZDQtNWMyNmUyY2QzZWFiIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwODMiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLW9hdXRoIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibXljbGllbnQiOnsicm9sZXMiOlsiUGF0aWVudC5EZWxldGUiLCJQcmFjdGl0aW9uZXIiLCJQYXRpZW50LldyaXRlIiwiUGF0aWVudC5SZWFkIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6InVzZXIyIHVzZXIyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjIiLCJnaXZlbl9uYW1lIjoidXNlcjIiLCJmYW1pbHlfbmFtZSI6InVzZXIyIiwiZW1haWwiOiJ1c2VyMkBnbWFpbC5jb20ifQ.Bi3TekuAGDBkcBDZUpfzjOxzk7RKXLOuIBI94L364AsouEjt_6DKvoKSSTSIvsX5mPvoWQqHWbY13ffssiafSuc5oxnNHjmxu9po3NC2jfDU_Y5aCsc5haF9BjOvP5I0RYzBEU3bfIgJDBAaR4pFn7sIlnYAWU-v_fMElw38BMTgsTn0KXMAr4WqwhKMnK-CA9uBvHAN6Apgj3UUyqw3JCocZeG-UFne6pHtzRsGfJWVOPKhfdxuj8Mdgl0iwYEQ8KS8w0ui5UujIm8aqeroXHhwGMOe3gjuA3J7GL-00qn9VYouYojdWRmdibbq1STPfhghhBV-E1P6693tx9Cz-A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"a1136620-9f7d-41b1-ae4f-191a9365041c\",\r\n  \"name\": \"Иванов Иван Иванович\",\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"2025-03-25T10:37:29\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/patients/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"patients",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPatient",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJXR1JWUHRXazktNW1GbzI3bHVKbTNWamx0Rk5yTWNLV3dlbmtXWVhSMnBNIn0.eyJleHAiOjE3NDI5MTE1NTcsImlhdCI6MTc0MjkxMTI1NywianRpIjoiOThjNTdhY2YtNjc1Mi00MDlmLTg5MWItNzBlZjFlOGQzNjUwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5MDkwL3JlYWxtcy9PQXV0aCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI1MjM4YWMzNC01ZTM2LTQxY2ItODEzNS1mMzkyYjAxODE3ZjEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJteWNsaWVudCIsInNpZCI6IjZmZGVlOWVhLTM0YmUtNGYyNy05OTQ5LThkMTVlZmQ1ZWIwOSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDgzIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJQcmFjdGl0aW9uZXIiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1vYXV0aCJdfSwicmVzb3VyY2VfYWNjZXNzIjp7Im15Y2xpZW50Ijp7InJvbGVzIjpbIlByYWN0aXRpb25lciIsIlBhdGllbnQuRGVsZXRlIiwiUGF0aWVudC5Xcml0ZSIsIlBhdGllbnQuUmVhZCJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJ1c2VyMiB1c2VyMiIsInByZWZlcnJlZF91c2VybmFtZSI6InVzZXIyIiwiZ2l2ZW5fbmFtZSI6InVzZXIyIiwiZmFtaWx5X25hbWUiOiJ1c2VyMiIsImVtYWlsIjoidXNlcjJAZ21haWwuY29tIn0.OZx1Te_ozDizj4EO6DZ-Ur3p1l_P2roARRhm8srMXEioaBwDRniQhGSV-cAKQY3kQW_9y6DcMTzfLqI1Kag6ld9kYTgh_8si4VodCiHA2FCcvcZK1-rTEiD_9AcLp1vHLbzzj9fnlbWbwwnNSnVBfwL5hQyAcDTgiejgDqAGtJEElhhqBlPp62dP8BC5p2iDqhmbfQBwQ4wgUMeFo0_HbNxpUPrUf6QpJRaVf9qxWqjNZu9DTdJiHjoLTznsZJdkeq8koc80f36A9HN_fEZgbeAQM5DQafe6q0Su3EkiKOGJUcQWSg6bJFqOPjgXXQqBGO7RK0tASWAlHfTIu88K9Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Ваня Ванечка Ванёв\",\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"2025-03-25T10:37:29\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/patients/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"patients",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePatientById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJEVm9GcjNBMmxIYktzcVFJT2c5OU9oOUFpZ2oxcjBGVlF0X01fekctMnh3In0.eyJleHAiOjE3NDI5OTQ0NDQsImlhdCI6MTc0Mjk5NDE0NCwianRpIjoiNzQwZDkyMjItZDFlNS00NDE3LTg3MTYtZGNkYWRhYzUzMmNmIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL09BdXRoIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImI3YjQzYzY3LWQzM2QtNGY3ZS1hNjdlLWRmNzcxNzlmYjI5MyIsInR5cCI6IkJlYXJlciIsImF6cCI6Im15Y2xpZW50Iiwic2lkIjoiMzkyZjQ5ZjktZmUwMy00MDg5LTk0ZDQtNWMyNmUyY2QzZWFiIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwODMiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLW9hdXRoIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibXljbGllbnQiOnsicm9sZXMiOlsiUGF0aWVudC5EZWxldGUiLCJQcmFjdGl0aW9uZXIiLCJQYXRpZW50LldyaXRlIiwiUGF0aWVudC5SZWFkIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6InVzZXIyIHVzZXIyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjIiLCJnaXZlbl9uYW1lIjoidXNlcjIiLCJmYW1pbHlfbmFtZSI6InVzZXIyIiwiZW1haWwiOiJ1c2VyMkBnbWFpbC5jb20ifQ.Bi3TekuAGDBkcBDZUpfzjOxzk7RKXLOuIBI94L364AsouEjt_6DKvoKSSTSIvsX5mPvoWQqHWbY13ffssiafSuc5oxnNHjmxu9po3NC2jfDU_Y5aCsc5haF9BjOvP5I0RYzBEU3bfIgJDBAaR4pFn7sIlnYAWU-v_fMElw38BMTgsTn0KXMAr4WqwhKMnK-CA9uBvHAN6Apgj3UUyqw3JCocZeG-UFne6pHtzRsGfJWVOPKhfdxuj8Mdgl0iwYEQ8KS8w0ui5UujIm8aqeroXHhwGMOe3gjuA3J7GL-00qn9VYouYojdWRmdibbq1STPfhghhBV-E1P6693tx9Cz-A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/patients/delete/a1136620-9f7d-41b1-ae4f-191a9365041c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"patients",
+						"delete",
+						"a1136620-9f7d-41b1-ae4f-191a9365041c"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
