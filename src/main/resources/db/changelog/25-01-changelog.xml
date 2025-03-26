@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1742917133462-1" author="srmzhk">
+        <createSequence incrementBy="50" sequenceName="revinfo_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1742917133462-3" author="srmzhk">
+        <createTable tableName="patients_aud" ifNotExists="true">
+            <column name="rev" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_patients_aud"/>
+            </column>
+            <column name="revtype" type="SMALLINT"/>
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_patients_aud"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="gender" type="VARCHAR(255)"/>
+            <column name="birth_date" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1742917133462-4" author="srmzhk">
+        <createTable tableName="revinfo" ifNotExists="true">
+            <column name="rev" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_revinfo"/>
+            </column>
+            <column name="revtstmp" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1742917133462-5" author="srmzhk">
+        <addForeignKeyConstraint baseColumnNames="rev" baseTableName="patients_aud"
+                                 constraintName="FK_PATIENTS_AUD_ON_REV" referencedColumnNames="rev"
+                                 referencedTableName="revinfo"/>
+    </changeSet>
+</databaseChangeLog>

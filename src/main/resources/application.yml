@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: patient-service
+  datasource:
+    url: jdbc:postgresql://postgres:5432/patient_db?currentSchema=patient
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+      org:
+        hibernate:
+          envers:
+            default_schema: patient
+
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+    enabled: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://keycloak:8080/realms/OAuth/protocol/openid-connect/certs
+server:
+  port: 8083
+logging:
+  level:
+    org.springframework.security: TRACE
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  file:
+    name: logs/application.log
+
+  logback:
+    rollingpolicy:
+      total-size-cap: 100MB
+      max-history: 7
+      max-file-size: 10MB
+
+jwt:
+  auth:
+    converter:
+      principle-attribute: preferred_username
+      resource-id: myclient
