@@ -12,7 +12,7 @@
 	"id" : "d8ff176f-bd0a-4b8e-b329-871952e32e1f",
 	"name": "Иванов Иван Иванович",
 	"gender": "male",
-	"birthDate
+	"birthDate": "1965-03-25T19:06:00"
 }
 ```
 
