@@ -43,9 +43,15 @@ public class PatientServiceImpl implements IPatientService {
     }
 
     @Override
+    @Transactional
     public PatientDto createPatient(PatientDto patientDto) {
-        Patient patient = modelMapper.map(patientDto, Patient.class);
-        patient = patientRepository.save(patient);
+        Patient patient;
+        try {
+            patient = modelMapper.map(patientDto, Patient.class);
+            patient = patientRepository.save(patient);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         return modelMapper.map(patient, PatientDto.class);
     }
@@ -53,14 +59,18 @@ public class PatientServiceImpl implements IPatientService {
     @Override
     @Transactional
     public PatientDto updatePatient(PatientDto patientDto) {
-        Patient patient = patientRepository.findPatientById(patientDto.getId())
-                .orElseThrow(ItemNotFoundException::new);
+        Patient patient;
+        try {
+            patient = patientRepository.findPatientById(patientDto.getId())
+                    .orElseThrow(ItemNotFoundException::new);
 
-        patient.setBirthDate(patientDto.getBirthDate());
-        patient.setGender(patientDto.getGender());
-        patient.setName(patientDto.getName());
-        patient = patientRepository.save(patient);
-
+            patient.setBirthDate(patientDto.getBirthDate());
+            patient.setGender(patientDto.getGender());
+            patient.setName(patientDto.getName());
+            patient = patientRepository.save(patient);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return modelMapper.map(patient, PatientDto.class);
     }
 

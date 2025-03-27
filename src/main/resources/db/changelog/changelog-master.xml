@@ -5,16 +5,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd"
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
-    <changeSet id="1742763900917-1" author="srmzhk">
-        <createTable tableName="patients" ifNotExists="true">
-            <column name="id" type="UUID">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_patients"/>
-            </column>
-            <column name="name" type="VARCHAR(255)"/>
-            <column name="gender" type="VARCHAR(255)"/>
-            <column name="birth_date" type="DATETIME"/>
-        </createTable>
-    </changeSet>
+
+    <include file="db/changelog/init-changelog.xml"/>
     <include file="db/changelog/25-01-changelog.xml"/>
 
 </databaseChangeLog>

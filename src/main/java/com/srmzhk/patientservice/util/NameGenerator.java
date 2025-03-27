@@ -1,11 +1,9 @@
 package com.srmzhk.patientservice.util;
 
-import org.springframework.stereotype.Component;
-
 import java.util.Random;
 
-@Component
-public class NameGenerator { // generate names for PatientGenerator
+// generate names for PatientGenerator
+public class NameGenerator {
 
     private static final Random rand = new Random();
 

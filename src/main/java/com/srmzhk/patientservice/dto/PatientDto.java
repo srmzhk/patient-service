@@ -3,7 +3,6 @@ package com.srmzhk.patientservice.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.srmzhk.patientservice.util.Gender;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,13 +14,13 @@ import java.util.UUID;
 @NoArgsConstructor
 public class PatientDto {
 
-    UUID id;
+    private UUID id;
 
-    String name;
+    private String name;
 
     @Enumerated(EnumType.STRING)
-    Gender gender;
+    private Gender gender;
 
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    LocalDateTime birthDate;
+    private LocalDateTime birthDate;
 }

@@ -19,12 +19,12 @@ import java.util.UUID;
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    UUID id;
+    private UUID id;
 
-    String name;
+    private String name;
 
     @Enumerated(EnumType.STRING)
-    Gender gender;
+    private Gender gender;
 
-    LocalDateTime birthDate;
+    private LocalDateTime birthDate;
 }

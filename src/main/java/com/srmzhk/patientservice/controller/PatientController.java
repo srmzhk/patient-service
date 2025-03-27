@@ -1,6 +1,8 @@
 package com.srmzhk.patientservice.controller;
 
 import com.srmzhk.patientservice.dto.PatientDto;
+import com.srmzhk.patientservice.dto.ResponseError;
+import com.srmzhk.patientservice.dto.swagger.PatientResponse;
 import com.srmzhk.patientservice.service.IPatientService;
 import com.srmzhk.patientservice.util.NameValidator;
 import io.swagger.v3.oas.annotations.Hidden;
@@ -37,18 +39,14 @@ public class PatientController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "List of patients retrieved successfully",
                     content = @Content(
-                            schema = @Schema(implementation = PatientDto.class),
-                            examples = @ExampleObject(value =
-                                    "{\"id\":\"d281e67a-1f88-4175-92c7-a4dda6f63ef9\"," +
-                                    " \"name\":\"Иванов Иван Иванович\"," +
-                                    " \"gender\":\"male\"," +
-                                    " \"birthDate\":\"1980-03-25T13:06:46\"}")
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = PatientResponse.class)
                     )
             ),
             @ApiResponse(responseCode = "500", description = "Internal server error",
                     content = @Content(
-                            schema = @Schema(type = "string"),
-                            examples = @ExampleObject(value = "Internal server error: ...")
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ResponseError.class)
                     )
             )
     })
@@ -67,23 +65,19 @@ public class PatientController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Patient retrieved successfully",
                     content = @Content(
-                            schema = @Schema(implementation = PatientDto.class),
-                            examples = @ExampleObject(value =
-                                    "{\"id\":\"d281e67a-1f88-4175-92c7-a4dda6f63ef9\"," +
-                                    " \"name\":\"Иванов Иван Иванович\"," +
-                                    " \"gender\":\"male\"," +
-                                    " \"birthDate\":\"1980-03-25T13:06:46\"}")
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = PatientResponse.class)
                     )
             ),
-            @ApiResponse(responseCode = "404", description = "Item not found",
+            @ApiResponse(responseCode = "204", description = "No content",
                     content = @Content(
-                            schema = @Schema(type = "string"),
-                            examples = @ExampleObject(value = "Item not found: ...")
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ResponseError.class)
                     )),
             @ApiResponse(responseCode = "500", description = "Internal server error",
                     content = @Content(
-                            schema = @Schema(type = "string"),
-                            examples = @ExampleObject(value = "Internal server error: ...")
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ResponseError.class)
                     )
             )
     })
@@ -113,23 +107,19 @@ public class PatientController {
         responses = {
                 @ApiResponse(responseCode = "200", description = "Patient created successfully",
                         content = @Content(
-                                schema = @Schema(implementation = PatientDto.class),
-                                examples = @ExampleObject(value =
-                                        "{\"id\":\"d281e67a-1f88-4175-92c7-a4dda6f63ef9\"," +
-                                        " \"name\":\"Иванов Иван Иванович\"," +
-                                        " \"gender\":\"male\"," +
-                                        " \"birthDate\":\"1980-03-25T13:06:46\"}")
+                                mediaType = "application/json",
+                                schema = @Schema(implementation = PatientResponse.class)
                         )
                 ),
                 @ApiResponse(responseCode = "400", description = "Invalid input data",
                         content = @Content(
-                                schema = @Schema(type = "string"),
-                                examples = @ExampleObject(value = "Invalid input data: ...")
+                                mediaType = "application/json",
+                                schema = @Schema(implementation = ResponseError.class)
                         )),
                 @ApiResponse(responseCode = "500", description = "Internal server error",
                         content = @Content(
-                            schema = @Schema(type = "string"),
-                            examples = @ExampleObject(value = "Internal server error: ...")
+                                mediaType = "application/json",
+                                schema = @Schema(implementation = ResponseError.class)
                         )
                 )
         }
@@ -137,12 +127,7 @@ public class PatientController {
     @SecurityRequirement(name = "bearerAuth")
     @PutMapping("/create")
     @PreAuthorize("hasRole('Practitioner') and hasAuthority('Patient.Write')")
-    public ResponseEntity<PatientDto> createPatient(
-            @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    description = "Patient data to create a new record",
-                    required = true
-            )
-            @RequestBody PatientDto patientDto) {
+    public ResponseEntity<PatientDto> createPatient(@RequestBody PatientDto patientDto) {
 
         // validate input name
         nameValidator.isValidName(patientDto.getName());
@@ -158,46 +143,34 @@ public class PatientController {
                     description = "Patient data to update an existing record",
                     required = true,
                     content = @Content(
-                            examples = @ExampleObject(value =
-                                    "{\"id\":\"d281e67a-1f88-4175-92c7-a4dda6f63ef9\"," +
-                                    " \"name\":\"Иванов Иван Иванович\"," +
-                                    " \"gender\":\"male\"," +
-                                    " \"birthDate\":\"1980-03-25T13:06:46\"}")
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = PatientResponse.class)
                     )
             )
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Patient updated successfully",
                     content = @Content(
-                            schema = @Schema(implementation = PatientDto.class),
-                            examples = @ExampleObject(value =
-                                    "{\"id\":\"d281e67a-1f88-4175-92c7-a4dda6f63ef9\"," +
-                                    " \"name\":\"Иванов Иван Иванович\"," +
-                                    " \"gender\":\"male\"," +
-                                    " \"birthDate\":\"1980-03-25T13:06:46\"}")
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = PatientResponse.class)
                     )
             ),
-            @ApiResponse(responseCode = "404", description = "Item not found",
+            @ApiResponse(responseCode = "204", description = "No content",
                     content = @Content(
-                            schema = @Schema(type = "string"),
-                            examples = @ExampleObject(value = "Item not found: ...")
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ResponseError.class)
                     )),
             @ApiResponse(responseCode = "500", description = "Internal server error",
                     content = @Content(
-                            schema = @Schema(type = "string"),
-                            examples = @ExampleObject(value = "Internal server error: ...")
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ResponseError.class)
                     )
             )
     })
     @SecurityRequirement(name = "bearerAuth")
     @PostMapping("/update")
     @PreAuthorize("hasRole('Practitioner') and hasAuthority('Patient.Write')")
-    public ResponseEntity<PatientDto> updatePatient(
-            @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    description = "Updated patient data",
-                    required = true
-            )
-            @RequestBody PatientDto patientDto) {
+    public ResponseEntity<PatientDto> updatePatient(@RequestBody PatientDto patientDto) {
 
         nameValidator.isValidName(patientDto.getName());
 
@@ -215,15 +188,15 @@ public class PatientController {
                             schema = @Schema(type = "string"),
                             examples = @ExampleObject(value = "Patient deleted successfully")
                     )),
-            @ApiResponse(responseCode = "404", description = "Item not found",
+            @ApiResponse(responseCode = "204", description = "No content",
                     content = @Content(
-                            schema = @Schema(type = "string"),
-                            examples = @ExampleObject(value = "Item not found: ...")
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ResponseError.class)
                     )),
             @ApiResponse(responseCode = "500", description = "Internal server error",
                     content = @Content(
-                            schema = @Schema(type = "string"),
-                            examples = @ExampleObject(value = "Internal server error: ...")
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ResponseError.class)
                     )
             )
     })
@@ -237,7 +210,7 @@ public class PatientController {
         return ResponseEntity.ok("Success");
     }
 
-    // using for generating 100 new Patients throw console PatientGenerator without authorization
+    // using for generating 100 new Patients throw console PatientGenerator with authorization
     @Hidden
     @PutMapping("/generate")
     @PreAuthorize("hasRole('Admin')")

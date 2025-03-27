@@ -22,10 +22,10 @@ public class PatientGenerator { // generate 100 new Patients and adding them to 
     // using for build request to your realm to get JWT for admin
     private static final String KEYCLOAK_BODY =
             "client_id=myclient&" +
-            "username=admin&" +
-            "password=admin&" +
-            "grant_type=password&" +
-            "client_secret=b2moEsjztDOtbt4OdCEWlln49I0JfttY";
+                    "username=admin&" +
+                    "password=admin&" +
+                    "grant_type=password&" +
+                    "client_secret=b2moEsjztDOtbt4OdCEWlln49I0JfttY";
     private static final HttpClient client = HttpClient.newHttpClient();
     private static final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
