@@ -8,7 +8,7 @@ services:
       POSTGRES_DB: keycloak
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./src/resources/db/init-scripts:/docker-entrypoint-initdb.d
+      - ./src/main/resources/db/init-scripts:/docker-entrypoint-initdb.d
     ports:
       - 5435:5432
     networks:

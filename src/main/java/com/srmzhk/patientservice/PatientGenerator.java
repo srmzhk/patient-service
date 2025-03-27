@@ -25,7 +25,7 @@ public class PatientGenerator { // generate 100 new Patients and adding them to 
                     "username=admin&" +
                     "password=admin&" +
                     "grant_type=password&" +
-                    "client_secret=b2moEsjztDOtbt4OdCEWlln49I0JfttY";
+                    "client_secret=qDtt8RI8IKPLNeqcrnx0sAgwOiqO1TZl";
     private static final HttpClient client = HttpClient.newHttpClient();
     private static final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 

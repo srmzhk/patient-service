@@ -82,7 +82,7 @@ public class PatientController {
             )
     })
     @SecurityRequirement(name = "bearerAuth")
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     @PreAuthorize("hasRole('Patient') and hasAuthority('Patient.Read')")
     public ResponseEntity<PatientDto> getPatientById(
             @Parameter(description = "UUID of the patient to retrieve", required = true)
